@@ -42,6 +42,9 @@ extends AbstractLicenseSniffer {
       String  value   = jarFile.getManifest().getMainAttributes().getValue("Bundle-License");
 
       if (value != null) {
+        license = value;
+      }
+      else {
         // Try determining the license from text source files in the JAR
         license = new SourceJarLicenseSniffer(sourceFile).determineLicense();
       }
